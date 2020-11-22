@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,15 +55,21 @@
             this.btnRedo = new System.Windows.Forms.ToolStripButton();
             this.toolBox = new System.Windows.Forms.Panel();
             this.spContainerOut = new System.Windows.Forms.SplitContainer();
+            this.panelTool = new System.Windows.Forms.Panel();
+            this.btnMenuContol = new System.Windows.Forms.Button();
             this.lblTool = new System.Windows.Forms.Label();
             this.userSwitchPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.userSwitchComBox = new System.Windows.Forms.ComboBox();
-            this.lblUserSwitch = new System.Windows.Forms.Label();
-            this.btnMenuContol = new System.Windows.Forms.Button();
             this.spContainerInside = new System.Windows.Forms.SplitContainer();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.退出ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.panelTool = new System.Windows.Forms.Panel();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.lblResultTip = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelMenuInfo = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolBox.SuspendLayout();
@@ -70,11 +77,13 @@
             this.spContainerOut.Panel1.SuspendLayout();
             this.spContainerOut.Panel2.SuspendLayout();
             this.spContainerOut.SuspendLayout();
-            this.userSwitchPanel.SuspendLayout();
+            this.panelTool.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerInside)).BeginInit();
+            this.spContainerInside.Panel1.SuspendLayout();
             this.spContainerInside.Panel2.SuspendLayout();
             this.spContainerInside.SuspendLayout();
-            this.panelTool.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // 文件ToolStripMenuItem
@@ -305,70 +314,50 @@
             this.spContainerOut.SplitterDistance = 159;
             this.spContainerOut.TabIndex = 0;
             // 
+            // panelTool
+            // 
+            this.panelTool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTool.Controls.Add(this.btnMenuContol);
+            this.panelTool.Controls.Add(this.lblTool);
+            this.panelTool.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTool.Location = new System.Drawing.Point(0, 46);
+            this.panelTool.Name = "panelTool";
+            this.panelTool.Size = new System.Drawing.Size(155, 626);
+            this.panelTool.TabIndex = 1;
+            // 
+            // btnMenuContol
+            // 
+            this.btnMenuContol.AllowDrop = true;
+            this.btnMenuContol.BackColor = System.Drawing.Color.White;
+            this.btnMenuContol.ContextMenuStrip = this.contextMenuStrip1;
+            this.btnMenuContol.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnMenuContol.Location = new System.Drawing.Point(19, 36);
+            this.btnMenuContol.Name = "btnMenuContol";
+            this.btnMenuContol.Size = new System.Drawing.Size(95, 36);
+            this.btnMenuContol.TabIndex = 5;
+            this.btnMenuContol.Text = "MenuStrip";
+            this.btnMenuContol.UseVisualStyleBackColor = false;
+            this.btnMenuContol.Click += new System.EventHandler(this.btnMenuContol_Click);
+            // 
             // lblTool
             // 
             this.lblTool.AutoSize = true;
-            this.lblTool.Location = new System.Drawing.Point(3, 9);
+            this.lblTool.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblTool.Location = new System.Drawing.Point(2, 7);
             this.lblTool.Name = "lblTool";
             this.lblTool.Size = new System.Drawing.Size(44, 12);
-            this.lblTool.TabIndex = 0;
+            this.lblTool.TabIndex = 4;
             this.lblTool.Text = "工具箱";
             // 
             // userSwitchPanel
             // 
             this.userSwitchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.userSwitchPanel.Controls.Add(this.userSwitchComBox);
-            this.userSwitchPanel.Controls.Add(this.lblUserSwitch);
             this.userSwitchPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.userSwitchPanel.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
             this.userSwitchPanel.Location = new System.Drawing.Point(0, 0);
             this.userSwitchPanel.Name = "userSwitchPanel";
             this.userSwitchPanel.Size = new System.Drawing.Size(155, 46);
             this.userSwitchPanel.TabIndex = 0;
-            // 
-            // userSwitchComBox
-            // 
-            this.userSwitchComBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.userSwitchComBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.userSwitchComBox.FormattingEnabled = true;
-            this.userSwitchComBox.Items.AddRange(new object[] {
-            "前台未登录",
-            "派班角色登录",
-            "调度登录",
-            "维护登录",
-            "车务终端监视员登录",
-            "调度主任登录",
-            "现地值班员未登录",
-            "现地值班员登录",
-            "后台登未录",
-            "后台登录",
-            "编图员未登录",
-            "编图员登录",
-            "管理员登录"});
-            this.userSwitchComBox.Location = new System.Drawing.Point(3, 21);
-            this.userSwitchComBox.Name = "userSwitchComBox";
-            this.userSwitchComBox.Size = new System.Drawing.Size(146, 20);
-            this.userSwitchComBox.TabIndex = 0;
-            // 
-            // lblUserSwitch
-            // 
-            this.lblUserSwitch.AutoSize = true;
-            this.lblUserSwitch.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblUserSwitch.Location = new System.Drawing.Point(3, 6);
-            this.lblUserSwitch.Name = "lblUserSwitch";
-            this.lblUserSwitch.Size = new System.Drawing.Size(57, 12);
-            this.lblUserSwitch.TabIndex = 1;
-            this.lblUserSwitch.Text = "用户切换";
-            // 
-            // btnMenuContol
-            // 
-            this.btnMenuContol.BackColor = System.Drawing.Color.White;
-            this.btnMenuContol.Location = new System.Drawing.Point(20, 30);
-            this.btnMenuContol.Name = "btnMenuContol";
-            this.btnMenuContol.Size = new System.Drawing.Size(95, 36);
-            this.btnMenuContol.TabIndex = 1;
-            this.btnMenuContol.Text = "MenuStrip";
-            this.btnMenuContol.UseVisualStyleBackColor = false;
             // 
             // spContainerInside
             // 
@@ -381,23 +370,50 @@
             // spContainerInside.Panel1
             // 
             this.spContainerInside.Panel1.AutoScroll = true;
+            this.spContainerInside.Panel1.Controls.Add(this.panelMenuInfo);
+            this.spContainerInside.Panel1.Controls.Add(this.menuStrip2);
             // 
             // spContainerInside.Panel2
             // 
+            this.spContainerInside.Panel2.AutoScroll = true;
             this.spContainerInside.Panel2.Controls.Add(this.label1);
             this.spContainerInside.Panel2.Controls.Add(this.propertyGrid1);
             this.spContainerInside.Size = new System.Drawing.Size(1097, 672);
             this.spContainerInside.SplitterDistance = 770;
             this.spContainerInside.TabIndex = 0;
             // 
-            // propertyGrid1
+            // menuStrip2
             // 
-            this.propertyGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.propertyGrid1.Location = new System.Drawing.Point(6, 53);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(306, 595);
-            this.propertyGrid1.TabIndex = 3;
+            this.menuStrip2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.系统ToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(59, 28);
+            this.menuStrip2.TabIndex = 0;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // 系统ToolStripMenuItem
+            // 
+            this.系统ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.用户管理ToolStripMenuItem,
+            this.退出ToolStripMenuItem1});
+            this.系统ToolStripMenuItem.Name = "系统ToolStripMenuItem";
+            this.系统ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
+            this.系统ToolStripMenuItem.Text = "系统";
+            // 
+            // 用户管理ToolStripMenuItem
+            // 
+            this.用户管理ToolStripMenuItem.Name = "用户管理ToolStripMenuItem";
+            this.用户管理ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.用户管理ToolStripMenuItem.Text = "用户管理";
+            // 
+            // 退出ToolStripMenuItem1
+            // 
+            this.退出ToolStripMenuItem1.Name = "退出ToolStripMenuItem1";
+            this.退出ToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.退出ToolStripMenuItem1.Text = "退出";
             // 
             // label1
             // 
@@ -408,16 +424,44 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "属性";
             // 
-            // panelTool
+            // propertyGrid1
             // 
-            this.panelTool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelTool.Controls.Add(this.btnMenuContol);
-            this.panelTool.Controls.Add(this.lblTool);
-            this.panelTool.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTool.Location = new System.Drawing.Point(0, 46);
-            this.panelTool.Name = "panelTool";
-            this.panelTool.Size = new System.Drawing.Size(155, 626);
-            this.panelTool.TabIndex = 1;
+            this.propertyGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.propertyGrid1.Location = new System.Drawing.Point(6, 53);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(306, 595);
+            this.propertyGrid1.TabIndex = 3;
+            // 
+            // lblResultTip
+            // 
+            this.lblResultTip.AutoSize = true;
+            this.lblResultTip.Location = new System.Drawing.Point(944, 38);
+            this.lblResultTip.Name = "lblResultTip";
+            this.lblResultTip.Size = new System.Drawing.Size(47, 12);
+            this.lblResultTip.TabIndex = 5;
+            this.lblResultTip.Text = "      ";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(106, 28);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(105, 24);
+            this.toolStripMenuItem3.Text = "111";
+            // 
+            // panelMenuInfo
+            // 
+            this.panelMenuInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMenuInfo.Location = new System.Drawing.Point(0, 221);
+            this.panelMenuInfo.Name = "panelMenuInfo";
+            this.panelMenuInfo.Size = new System.Drawing.Size(748, 452);
+            this.panelMenuInfo.TabIndex = 1;
             // 
             // FrmMain
             // 
@@ -425,6 +469,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1264, 729);
+            this.Controls.Add(this.lblResultTip);
             this.Controls.Add(this.toolBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -443,14 +488,17 @@
             this.spContainerOut.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spContainerOut)).EndInit();
             this.spContainerOut.ResumeLayout(false);
-            this.userSwitchPanel.ResumeLayout(false);
-            this.userSwitchPanel.PerformLayout();
+            this.panelTool.ResumeLayout(false);
+            this.panelTool.PerformLayout();
+            this.spContainerInside.Panel1.ResumeLayout(false);
+            this.spContainerInside.Panel1.PerformLayout();
             this.spContainerInside.Panel2.ResumeLayout(false);
             this.spContainerInside.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerInside)).EndInit();
             this.spContainerInside.ResumeLayout(false);
-            this.panelTool.ResumeLayout(false);
-            this.panelTool.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,15 +532,21 @@
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.Panel toolBox;
         private System.Windows.Forms.SplitContainer spContainerOut;
-        private System.Windows.Forms.Label lblTool;
-        private System.Windows.Forms.Button btnMenuContol;
         private System.Windows.Forms.FlowLayoutPanel userSwitchPanel;
-        private System.Windows.Forms.ComboBox userSwitchComBox;
-        private System.Windows.Forms.Label lblUserSwitch;
         private System.Windows.Forms.SplitContainer spContainerInside;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.PropertyGrid propertyGrid1;
         private System.Windows.Forms.Panel panelTool;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.Label lblResultTip;
+        private System.Windows.Forms.ToolStripMenuItem 系统ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 用户管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem1;
+        private System.Windows.Forms.Button btnMenuContol;
+        private System.Windows.Forms.Label lblTool;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.Panel panelMenuInfo;
     }
 }
 

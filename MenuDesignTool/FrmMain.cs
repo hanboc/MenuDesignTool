@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MenuDesignTool.allUserControls;
 
 namespace MenuDesignTool
 {
@@ -16,16 +17,41 @@ namespace MenuDesignTool
         {
             InitializeComponent();
 
-            userSwitchComBox.SelectedIndex = 0;  // 设置用户选择下拉框默认显示为前台未登录
+            // 添加用户切换控件
+            UserSwitchUserControl userSwitchUserControl = new UserSwitchUserControl();
+            this.userSwitchPanel.Controls.Add(userSwitchUserControl);
+            //menuStrip2.ContextMenuStrip = this.contextMenuStrip1;
 
-            //将显示设计菜单效果的窗体嵌入到主窗体内部容器的panel1中
-            FrmMenu frmMenu = new FrmMenu();
-            frmMenu.Dock = DockStyle.Fill;
-            frmMenu.TopLevel = false;
-            spContainerInside.Panel1.Controls.Add(frmMenu);
-            //tableLayoutPanel1.Controls.Add(frmMenu);
-            frmMenu.Show();
+            // 添加MenuInfo控件
+            MenuInfoUserControl menuInfoUserControl = new MenuInfoUserControl();
+            this.panelMenuInfo.Controls.Add(menuInfoUserControl);
+
         }
 
+        private void btnMenuContol_Click(object sender, EventArgs e)
+        {
+
+            ToolStripMenuItem newMenu = new ToolStripMenuItem("插入");
+            this.menuStrip2.Items.Add(newMenu);
+            lblResultTip.BackColor = Color.Red;
+            lblResultTip.Text = "插入新的菜单栏菜单";
+
+            this.propertyGrid1.SelectedObject = newMenu;
+
+            //newMenu.MouseUp += new MouseEventHandler(MenuControlClick);
+            foreach (Control item in spContainerInside.Panel1.Controls)
+            {
+                item.ContextMenuStrip = this.contextMenuStrip1;
+            }
+        }
+
+        private void MenuControlClick(object sender, EventArgs e)
+        {
+
+            ToolStripMenuItem menu = (ToolStripMenuItem)sender;
+            ToolStripMenuItem childrenMenu = new ToolStripMenuItem("子菜单");
+            menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { childrenMenu });
+            propertyGrid1.SelectedObject = childrenMenu;
+        }
     }
 }

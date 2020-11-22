@@ -23,5 +23,9 @@ namespace MenuDesignTool
             this.Location = point;
         }
 
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            menuStrip1.Items.Remove((ToolStripMenuItem)sender);
+        }
     }
 }

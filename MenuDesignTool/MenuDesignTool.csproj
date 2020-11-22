@@ -46,6 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="allUserControls\CheckEmptyCustomControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="allUserControls\CheckEmptyCustomControl.Designer.cs">
+      <DependentUpon>CheckEmptyCustomControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="allUserControls\MenuInfoUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="allUserControls\MenuInfoUserControl.Designer.cs">
+      <DependentUpon>MenuInfoUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="allUserControls\UserSwitchUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="allUserControls\UserSwitchUserControl.Designer.cs">
+      <DependentUpon>UserSwitchUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClickType.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,9 +77,16 @@
     <Compile Include="FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserRole.cs" />
+    <EmbeddedResource Include="allUserControls\MenuInfoUserControl.resx">
+      <DependentUpon>MenuInfoUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="allUserControls\UserSwitchUserControl.resx">
+      <DependentUpon>UserSwitchUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,22 +117,33 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="image\reload.ico" />
+    <EmbeddedResource Include="image\reload.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="image\Cancle.ico" />
+    <EmbeddedResource Include="image\Cancle.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="image\Redo.ico" />
+    <EmbeddedResource Include="image\Redo.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="image\Return.ico" />
+    <EmbeddedResource Include="image\Return.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="image\Save.ico" />
+    <EmbeddedResource Include="image\Save.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
