@@ -58,6 +58,12 @@
     <Compile Include="allUserControls\MenuInfoUserControl.Designer.cs">
       <DependentUpon>MenuInfoUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="allUserControls\TreeComboBoxCustomControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="allUserControls\TreeComboBoxCustomControl.designer.cs">
+      <DependentUpon>TreeComboBoxCustomControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="allUserControls\UserSwitchUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -144,6 +150,10 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="allUserControls\BM_dropdown.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

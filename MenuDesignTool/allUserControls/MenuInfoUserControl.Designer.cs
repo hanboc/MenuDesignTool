@@ -52,12 +52,14 @@
             this.lblContent = new System.Windows.Forms.Label();
             this.txtTopClickType = new System.Windows.Forms.TextBox();
             this.lblTopClickType = new System.Windows.Forms.Label();
+            this.clickTypeTreeView = new MenuDesignTool.allUserControls.TreeComboBoxCustomControl(this.components);
             this.txtContent = new MenuDesignTool.allUserControls.CheckEmptyCustomControl(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.clickTypeTreeView);
             this.groupBox1.Controls.Add(this.txtContent);
             this.groupBox1.Controls.Add(this.btnCancle);
             this.groupBox1.Controls.Add(this.btnOK);
@@ -299,7 +301,7 @@
             // 
             // txtTopClickType
             // 
-            this.txtTopClickType.Location = new System.Drawing.Point(169, 36);
+            this.txtTopClickType.Location = new System.Drawing.Point(52, 340);
             this.txtTopClickType.Name = "txtTopClickType";
             this.txtTopClickType.Size = new System.Drawing.Size(144, 21);
             this.txtTopClickType.TabIndex = 1;
@@ -308,15 +310,29 @@
             // 
             this.lblTopClickType.AutoSize = true;
             this.lblTopClickType.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblTopClickType.Location = new System.Drawing.Point(83, 40);
+            this.lblTopClickType.Location = new System.Drawing.Point(83, 30);
             this.lblTopClickType.Name = "lblTopClickType";
             this.lblTopClickType.Size = new System.Drawing.Size(70, 12);
             this.lblTopClickType.TabIndex = 0;
             this.lblTopClickType.Text = "操作类型：";
             // 
+            // clickTypeTreeView
+            // 
+            this.clickTypeTreeView.ImageList = null;
+            this.clickTypeTreeView.Location = new System.Drawing.Point(169, 26);
+            this.clickTypeTreeView.MaxDropDownItems = 50;
+            this.clickTypeTreeView.Name = "clickTypeTreeView";
+            this.clickTypeTreeView.SelectedNode = null;
+            this.clickTypeTreeView.ShowLines = true;
+            this.clickTypeTreeView.ShowNodeToolTips = false;
+            this.clickTypeTreeView.ShowPlusMinus = true;
+            this.clickTypeTreeView.ShowRootLines = true;
+            this.clickTypeTreeView.Size = new System.Drawing.Size(144, 21);
+            this.clickTypeTreeView.TabIndex = 6;
+            // 
             // txtContent
             // 
-            this.txtContent.Location = new System.Drawing.Point(169, 67);
+            this.txtContent.Location = new System.Drawing.Point(169, 63);
             this.txtContent.Name = "txtContent";
             this.txtContent.Size = new System.Drawing.Size(144, 21);
             this.txtContent.TabIndex = 5;
@@ -361,5 +377,6 @@
         private System.Windows.Forms.Button btnCancle;
         private System.Windows.Forms.Button btnOK;
         private CheckEmptyCustomControl txtContent;
+        private TreeComboBoxCustomControl clickTypeTreeView;
     }
 }
