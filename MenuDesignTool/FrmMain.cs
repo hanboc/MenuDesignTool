@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using MenuDesignTool.allUserControls;
 
 namespace MenuDesignTool
@@ -21,10 +23,6 @@ namespace MenuDesignTool
             UserSwitchUserControl userSwitchUserControl = new UserSwitchUserControl();
             this.userSwitchPanel.Controls.Add(userSwitchUserControl);
             //menuStrip2.ContextMenuStrip = this.contextMenuStrip1;
-
-            // 添加MenuInfo控件
-            MenuInfoUserControl menuInfoUserControl = new MenuInfoUserControl();
-            this.panelMenuInfo.Controls.Add(menuInfoUserControl);
 
         }
 
@@ -76,5 +74,94 @@ namespace MenuDesignTool
         {
             //string bindToolStripMenu = (sender as ContextMenuStrip).SourceControl.Name;
         }
+
+        #region 控件
+        #region 自定义控件TreeView数据绑定
+        /// <summary>
+        /// ini
+        /// </summary>
+        private const string _INI = "ini";
+
+        /// <summary>
+        /// ini
+        /// </summary>
+        private const string _FILE_DIRECTORY = "menu";
+
+        /// <summary>
+        /// menuClickTypes.xml
+        /// </summary>
+        private const string _FILENAME = "menuClickTypes.xml";
+
+        /// <summary>
+        /// 配置文件根路径
+        /// </summary>
+        private string _configRootPath = "";
+
+        /// <summary>
+        /// 菜单操作类型文件的路径
+        /// </summary>
+        private string _menuClickTypeFile = "";
+
+        /// <summary>
+        /// 数据分类数据绑定
+        /// </summary>
+        private void BindDataType()
+        {
+            XmlDocument document = new XmlDocument();
+
+            GetFilePath();
+            document.Load(_menuClickTypeFile);
+
+            clickTypeTreeView.Nodes.Clear();
+            BindXmlToTreeView(document.DocumentElement.ChildNodes, clickTypeTreeView.Nodes);
+
+        }
+
+        protected void BindXmlToTreeView(XmlNodeList xmlnodes, TreeNodeCollection treeNodes)
+        {
+            foreach (XmlNode child in xmlnodes)
+            {
+                if (child.Attributes != null && child.Attributes.Count > 0)
+                {
+                    string treeText = child.Attributes["value"].Value;
+                    TreeNode tn = new TreeNode(treeText);
+                    treeNodes.Add(tn);
+                    BindXmlToTreeView(child.ChildNodes, tn.Nodes);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取配置文件路径
+        /// </summary>
+        private void GetFilePath()
+        {
+            string configFilePath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).ToString();
+            configFilePath = Directory.GetParent(configFilePath).ToString();
+            _configRootPath = Path.Combine(configFilePath, _INI, _FILE_DIRECTORY);
+
+            _menuClickTypeFile = Path.Combine(_configRootPath, _FILENAME);
+        }
+
+        #endregion
+
+
+        /// <summary>
+        /// 开启菜单内容输入非空验证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtContent_Validated(object sender, EventArgs e)
+        {
+            this.txtContent.BeginCheckEmpty();
+        }
+        #endregion
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            BindDataType();
+        }
+
+        
     }
 }

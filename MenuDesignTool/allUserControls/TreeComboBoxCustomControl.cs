@@ -54,6 +54,7 @@ namespace MenuDesignTool.allUserControls
             this.m_DropdownButton.Width = 16;
             this.m_DropdownButton.Height = this.m_TextBox.Height - 2;
             this.m_DropdownButton.Location = new Point(this.m_TextBox.Right - 18, 1);
+
             this.m_DropdownButton.Click += new EventHandler(m_DropdownButton_Click);
             this.m_DropdownButton.FlatStyle = FlatStyle.Flat;
             this.m_DropdownButton.Parent = this;

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtContent = new MenuDesignTool.allUserControls.CheckEmptyCustomControl(this.components);
             this.btnCancle = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.cmbNoCon = new System.Windows.Forms.ComboBox();
@@ -52,14 +53,11 @@
             this.lblContent = new System.Windows.Forms.Label();
             this.txtTopClickType = new System.Windows.Forms.TextBox();
             this.lblTopClickType = new System.Windows.Forms.Label();
-            this.clickTypeTreeView = new MenuDesignTool.allUserControls.TreeComboBoxCustomControl(this.components);
-            this.txtContent = new MenuDesignTool.allUserControls.CheckEmptyCustomControl(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.clickTypeTreeView);
             this.groupBox1.Controls.Add(this.txtContent);
             this.groupBox1.Controls.Add(this.btnCancle);
             this.groupBox1.Controls.Add(this.btnOK);
@@ -91,6 +89,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "菜单属性";
             // 
+            // txtContent
+            // 
+            this.txtContent.Location = new System.Drawing.Point(169, 63);
+            this.txtContent.Name = "txtContent";
+            this.txtContent.Size = new System.Drawing.Size(144, 21);
+            this.txtContent.TabIndex = 5;
+            this.txtContent.Validated += new System.EventHandler(this.txtContent_Validated);
+            // 
             // btnCancle
             // 
             this.btnCancle.Location = new System.Drawing.Point(354, 350);
@@ -108,7 +114,6 @@
             this.btnOK.TabIndex = 4;
             this.btnOK.Text = "确定";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.txtTopClickType_Clicked);
             // 
             // cmbNoCon
             // 
@@ -301,10 +306,11 @@
             // 
             // txtTopClickType
             // 
-            this.txtTopClickType.Location = new System.Drawing.Point(52, 340);
+            this.txtTopClickType.Location = new System.Drawing.Point(169, 26);
             this.txtTopClickType.Name = "txtTopClickType";
             this.txtTopClickType.Size = new System.Drawing.Size(144, 21);
             this.txtTopClickType.TabIndex = 1;
+            this.txtTopClickType.Validated += new System.EventHandler(this.txtTopClickType_Validated);
             // 
             // lblTopClickType
             // 
@@ -315,28 +321,6 @@
             this.lblTopClickType.Size = new System.Drawing.Size(70, 12);
             this.lblTopClickType.TabIndex = 0;
             this.lblTopClickType.Text = "操作类型：";
-            // 
-            // clickTypeTreeView
-            // 
-            this.clickTypeTreeView.ImageList = null;
-            this.clickTypeTreeView.Location = new System.Drawing.Point(169, 26);
-            this.clickTypeTreeView.MaxDropDownItems = 50;
-            this.clickTypeTreeView.Name = "clickTypeTreeView";
-            this.clickTypeTreeView.SelectedNode = null;
-            this.clickTypeTreeView.ShowLines = true;
-            this.clickTypeTreeView.ShowNodeToolTips = false;
-            this.clickTypeTreeView.ShowPlusMinus = true;
-            this.clickTypeTreeView.ShowRootLines = true;
-            this.clickTypeTreeView.Size = new System.Drawing.Size(144, 21);
-            this.clickTypeTreeView.TabIndex = 6;
-            // 
-            // txtContent
-            // 
-            this.txtContent.Location = new System.Drawing.Point(169, 63);
-            this.txtContent.Name = "txtContent";
-            this.txtContent.Size = new System.Drawing.Size(144, 21);
-            this.txtContent.TabIndex = 5;
-            this.txtContent.Validated += new System.EventHandler(this.txtContent_Validated);
             // 
             // MenuInfoUserControl
             // 
@@ -377,6 +361,5 @@
         private System.Windows.Forms.Button btnCancle;
         private System.Windows.Forms.Button btnOK;
         private CheckEmptyCustomControl txtContent;
-        private TreeComboBoxCustomControl clickTypeTreeView;
     }
 }
