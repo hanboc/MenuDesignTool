@@ -15,6 +15,11 @@ namespace MenuDesignTool
 {
     public partial class FrmMain : Form
     {
+        // 记录鼠标右键选择的一级菜单项
+        ToolStripMenuItem checkMenuItem = null;
+        //右键选择的子菜单项
+        ToolStripMenuItem checkChildMenuItem = null;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -22,41 +27,49 @@ namespace MenuDesignTool
             // 添加用户切换控件
             UserSwitchUserControl userSwitchUserControl = new UserSwitchUserControl();
             this.userSwitchPanel.Controls.Add(userSwitchUserControl);
-            //menuStrip2.ContextMenuStrip = this.contextMenuStrip1;
 
         }
 
         private void btnMenuContol_Click(object sender, EventArgs e)
         {
-
             ToolStripMenuItem newMenu = new ToolStripMenuItem("一级菜单");
             this.menuStrip2.Items.Add(newMenu);
-            lblResultTip.BackColor = Color.Red;
-            lblResultTip.Text = "插入新的菜单栏菜单";
+            lblResultTip.BackColor = Color.Green;
+            lblResultTip.Text = "插入菜单项";
 
             this.propertyGrid1.SelectedObject = newMenu;
 
             newMenu.MouseUp += new MouseEventHandler(MenuControlClick);
-            //foreach (Control item in spContainerInside.Panel1.Controls)
-            //{
-            //    item.ContextMenuStrip = this.contextMenuStrip1;
-            //}
         }
 
         private void MenuControlClick(object sender, EventArgs e)
         {
             MouseEventArgs Mouse_e = (MouseEventArgs)e;
-            //Button menuButton = (Button)sender;
-            //menuButton.ContextMenuStrip = this.contextMenuStrip1;
             if (Mouse_e.Button == MouseButtons.Right)
             {
+                checkMenuItem = (ToolStripMenuItem)sender;
 
                 this.contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
             }
-            //ToolStripMenuItem menu = (ToolStripMenuItem)sender;
-            //ToolStripMenuItem childrenMenu = new ToolStripMenuItem("子菜单");
-            //menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { childrenMenu });
-            //propertyGrid1.SelectedObject = childrenMenu;
+            else
+            {
+                this.propertyGrid1.SelectedObject = sender;
+            }
+        }
+
+        private void MenuChildControlClick(object sender, EventArgs e)
+        {
+            MouseEventArgs Mouse_e = (MouseEventArgs)e;
+            if (Mouse_e.Button == MouseButtons.Right)
+            {
+                checkChildMenuItem = (ToolStripMenuItem)sender;
+
+                this.contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
+            }
+            else
+            {
+                this.propertyGrid1.SelectedObject = sender;
+            }
         }
 
         private void editTSMeu_Click(object sender, EventArgs e)
@@ -70,9 +83,23 @@ namespace MenuDesignTool
             //string bindToolStripMenu = (sender as ContextMenuStrip).SourceControl.Name;
         }
 
+        private void addChildTSMeu_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem childrenMenu = new ToolStripMenuItem("子菜单");
+            checkMenuItem.DropDownItems.Add(childrenMenu);
+
+            lblResultTip.BackColor = Color.Green;
+            lblResultTip.Text = $"菜单{checkMenuItem}插入子菜单项";
+            propertyGrid1.SelectedObject = childrenMenu;
+            childrenMenu.MouseUp += new MouseEventHandler(MenuChildControlClick);
+        }
+
         private void deleteTSMeu_Click(object sender, EventArgs e)
         {
-            //string bindToolStripMenu = (sender as ContextMenuStrip).SourceControl.Name;
+            //menuStrip2.Items.Remove(checkMenuItem);
+            checkMenuItem.DropDownItems.Remove(checkChildMenuItem);
+            lblResultTip.BackColor = Color.Red;
+            //lblResultTip.Text = $"删除菜单项：{checkChildMenuItem.Text}";
         }
 
         #region 控件
@@ -162,6 +189,9 @@ namespace MenuDesignTool
             BindDataType();
         }
 
-        
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

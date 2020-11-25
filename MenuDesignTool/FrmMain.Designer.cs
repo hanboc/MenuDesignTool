@@ -60,19 +60,19 @@
             this.lblTool = new System.Windows.Forms.Label();
             this.userSwitchPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.spContainerInside = new System.Windows.Forms.SplitContainer();
-            this.panelMenuInfo = new System.Windows.Forms.Panel();
+            this.panelMenuStrip = new System.Windows.Forms.Panel();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.登出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editTSMeu = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteTSMeu = new System.Windows.Forms.ToolStripMenuItem();
-            this.addChildTSMeu = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblResultTip = new System.Windows.Forms.Label();
+            this.panelMenuInfo = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.clickTypeTreeView = new MenuDesignTool.allUserControls.TreeComboBoxCustomControl(this.components);
+            this.txtContent = new MenuDesignTool.allUserControls.CheckEmptyCustomControl(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.cmbNoCon = new System.Windows.Forms.ComboBox();
@@ -94,9 +94,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.lblContent = new System.Windows.Forms.Label();
             this.lblTopClickType = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.clickTypeTreeView = new MenuDesignTool.allUserControls.TreeComboBoxCustomControl(this.components);
-            this.txtContent = new MenuDesignTool.allUserControls.CheckEmptyCustomControl(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editTSMeu = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteTSMeu = new System.Windows.Forms.ToolStripMenuItem();
+            this.addChildTSMeu = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblResultTip = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolBox.SuspendLayout();
@@ -109,10 +113,11 @@
             this.spContainerInside.Panel1.SuspendLayout();
             this.spContainerInside.Panel2.SuspendLayout();
             this.spContainerInside.SuspendLayout();
-            this.panelMenuInfo.SuspendLayout();
+            this.panelMenuStrip.SuspendLayout();
             this.menuStrip2.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
+            this.panelMenuInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // 文件ToolStripMenuItem
@@ -136,6 +141,7 @@
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(209, 24);
             this.退出ToolStripMenuItem.Text = "退出(&X)";
+            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
             // 编辑ToolStripMenuItem
             // 
@@ -397,9 +403,8 @@
             // 
             // spContainerInside.Panel1
             // 
-            this.spContainerInside.Panel1.AutoScroll = true;
+            this.spContainerInside.Panel1.Controls.Add(this.panelMenuStrip);
             this.spContainerInside.Panel1.Controls.Add(this.panelMenuInfo);
-            this.spContainerInside.Panel1.Controls.Add(this.menuStrip2);
             // 
             // spContainerInside.Panel2
             // 
@@ -410,16 +415,15 @@
             this.spContainerInside.SplitterDistance = 770;
             this.spContainerInside.TabIndex = 0;
             // 
-            // panelMenuInfo
+            // panelMenuStrip
             // 
-            this.panelMenuInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelMenuInfo.Controls.Add(this.groupBox1);
-            this.panelMenuInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelMenuInfo.Location = new System.Drawing.Point(0, 218);
-            this.panelMenuInfo.Name = "panelMenuInfo";
-            this.panelMenuInfo.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.panelMenuInfo.Size = new System.Drawing.Size(768, 452);
-            this.panelMenuInfo.TabIndex = 1;
+            this.panelMenuStrip.AutoScroll = true;
+            this.panelMenuStrip.Controls.Add(this.menuStrip2);
+            this.panelMenuStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.panelMenuStrip.Name = "panelMenuStrip";
+            this.panelMenuStrip.Size = new System.Drawing.Size(768, 218);
+            this.panelMenuStrip.TabIndex = 2;
             // 
             // menuStrip2
             // 
@@ -428,8 +432,9 @@
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.系统ToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.MdiWindowListItem = this.系统ToolStripMenuItem;
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(59, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(179, 28);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -451,9 +456,31 @@
             // 
             // 用户管理ToolStripMenuItem
             // 
+            this.用户管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.登录ToolStripMenuItem,
+            this.登出ToolStripMenuItem,
+            this.修改密码ToolStripMenuItem});
             this.用户管理ToolStripMenuItem.Name = "用户管理ToolStripMenuItem";
             this.用户管理ToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
             this.用户管理ToolStripMenuItem.Text = "用户管理";
+            // 
+            // 登录ToolStripMenuItem
+            // 
+            this.登录ToolStripMenuItem.Name = "登录ToolStripMenuItem";
+            this.登录ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.登录ToolStripMenuItem.Text = "登录";
+            // 
+            // 登出ToolStripMenuItem
+            // 
+            this.登出ToolStripMenuItem.Name = "登出ToolStripMenuItem";
+            this.登出ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.登出ToolStripMenuItem.Text = "登出";
+            // 
+            // 修改密码ToolStripMenuItem
+            // 
+            this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
+            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.修改密码ToolStripMenuItem.Text = "修改密码";
             // 
             // 退出ToolStripMenuItem1
             // 
@@ -461,62 +488,72 @@
             this.退出ToolStripMenuItem1.Size = new System.Drawing.Size(227, 24);
             this.退出ToolStripMenuItem1.Text = "退出";
             // 
-            // label1
+            // panelMenuInfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 12);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "属性";
+            this.panelMenuInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMenuInfo.Controls.Add(this.groupBox1);
+            this.panelMenuInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelMenuInfo.Location = new System.Drawing.Point(0, 218);
+            this.panelMenuInfo.Name = "panelMenuInfo";
+            this.panelMenuInfo.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.panelMenuInfo.Size = new System.Drawing.Size(768, 452);
+            this.panelMenuInfo.TabIndex = 1;
             // 
-            // propertyGrid1
+            // groupBox1
             // 
-            this.propertyGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.propertyGrid1.Location = new System.Drawing.Point(6, 53);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(306, 595);
-            this.propertyGrid1.TabIndex = 3;
+            this.groupBox1.Controls.Add(this.clickTypeTreeView);
+            this.groupBox1.Controls.Add(this.txtContent);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnOK);
+            this.groupBox1.Controls.Add(this.cmbNoCon);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.cmbUnCommunication);
+            this.groupBox1.Controls.Add(this.cmbStandCon);
+            this.groupBox1.Controls.Add(this.cmbUrgentStationCon);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.cmbCommunication);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.cmbHostCon);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cmbMidCon);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.lblContent);
+            this.groupBox1.Controls.Add(this.lblTopClickType);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(10, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(756, 450);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "菜单属性";
             // 
-            // contextMenuStrip1
+            // clickTypeTreeView
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editTSMeu,
-            this.deleteTSMeu,
-            this.addChildTSMeu});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(154, 76);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            this.clickTypeTreeView.ImageList = null;
+            this.clickTypeTreeView.Location = new System.Drawing.Point(315, 40);
+            this.clickTypeTreeView.MaxDropDownItems = 15;
+            this.clickTypeTreeView.Name = "clickTypeTreeView";
+            this.clickTypeTreeView.SelectedNode = null;
+            this.clickTypeTreeView.ShowLines = true;
+            this.clickTypeTreeView.ShowNodeToolTips = false;
+            this.clickTypeTreeView.ShowPlusMinus = true;
+            this.clickTypeTreeView.ShowRootLines = true;
+            this.clickTypeTreeView.Size = new System.Drawing.Size(144, 21);
+            this.clickTypeTreeView.TabIndex = 53;
             // 
-            // editTSMeu
+            // txtContent
             // 
-            this.editTSMeu.Name = "editTSMeu";
-            this.editTSMeu.Size = new System.Drawing.Size(153, 24);
-            this.editTSMeu.Text = "编辑...";
-            this.editTSMeu.Click += new System.EventHandler(this.editTSMeu_Click);
-            // 
-            // deleteTSMeu
-            // 
-            this.deleteTSMeu.Name = "deleteTSMeu";
-            this.deleteTSMeu.Size = new System.Drawing.Size(153, 24);
-            this.deleteTSMeu.Text = "删除此菜单";
-            this.deleteTSMeu.Click += new System.EventHandler(this.deleteTSMeu_Click);
-            // 
-            // addChildTSMeu
-            // 
-            this.addChildTSMeu.Name = "addChildTSMeu";
-            this.addChildTSMeu.Size = new System.Drawing.Size(153, 24);
-            this.addChildTSMeu.Text = "增加子菜单";
-            // 
-            // lblResultTip
-            // 
-            this.lblResultTip.AutoSize = true;
-            this.lblResultTip.Location = new System.Drawing.Point(944, 38);
-            this.lblResultTip.Name = "lblResultTip";
-            this.lblResultTip.Size = new System.Drawing.Size(47, 12);
-            this.lblResultTip.TabIndex = 5;
-            this.lblResultTip.Text = "      ";
+            this.txtContent.Location = new System.Drawing.Point(315, 77);
+            this.txtContent.Name = "txtContent";
+            this.txtContent.Size = new System.Drawing.Size(144, 21);
+            this.txtContent.TabIndex = 52;
+            this.txtContent.Validated += new System.EventHandler(this.txtContent_Validated);
             // 
             // button1
             // 
@@ -735,61 +772,64 @@
             this.lblTopClickType.TabIndex = 31;
             this.lblTopClickType.Text = "操作类型：";
             // 
-            // groupBox1
+            // label1
             // 
-            this.groupBox1.Controls.Add(this.clickTypeTreeView);
-            this.groupBox1.Controls.Add(this.txtContent);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.btnOK);
-            this.groupBox1.Controls.Add(this.cmbNoCon);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.cmbUnCommunication);
-            this.groupBox1.Controls.Add(this.cmbStandCon);
-            this.groupBox1.Controls.Add(this.cmbUrgentStationCon);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cmbCommunication);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.cmbHostCon);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.cmbMidCon);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.lblContent);
-            this.groupBox1.Controls.Add(this.lblTopClickType);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(10, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(756, 450);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "菜单属性";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 12);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "属性";
             // 
-            // clickTypeTreeView
+            // propertyGrid1
             // 
-            this.clickTypeTreeView.ImageList = null;
-            this.clickTypeTreeView.Location = new System.Drawing.Point(315, 40);
-            this.clickTypeTreeView.MaxDropDownItems = 15;
-            this.clickTypeTreeView.Name = "clickTypeTreeView";
-            this.clickTypeTreeView.SelectedNode = null;
-            this.clickTypeTreeView.ShowLines = true;
-            this.clickTypeTreeView.ShowNodeToolTips = false;
-            this.clickTypeTreeView.ShowPlusMinus = true;
-            this.clickTypeTreeView.ShowRootLines = true;
-            this.clickTypeTreeView.Size = new System.Drawing.Size(144, 21);
-            this.clickTypeTreeView.TabIndex = 53;
+            this.propertyGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.propertyGrid1.Location = new System.Drawing.Point(6, 53);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(306, 595);
+            this.propertyGrid1.TabIndex = 3;
             // 
-            // txtContent
+            // contextMenuStrip1
             // 
-            this.txtContent.Location = new System.Drawing.Point(315, 77);
-            this.txtContent.Name = "txtContent";
-            this.txtContent.Size = new System.Drawing.Size(144, 21);
-            this.txtContent.TabIndex = 52;
-            this.txtContent.Validated += new System.EventHandler(this.txtContent_Validated);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editTSMeu,
+            this.deleteTSMeu,
+            this.addChildTSMeu});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(154, 76);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // editTSMeu
+            // 
+            this.editTSMeu.Name = "editTSMeu";
+            this.editTSMeu.Size = new System.Drawing.Size(153, 24);
+            this.editTSMeu.Text = "编辑...";
+            this.editTSMeu.Click += new System.EventHandler(this.editTSMeu_Click);
+            // 
+            // deleteTSMeu
+            // 
+            this.deleteTSMeu.Name = "deleteTSMeu";
+            this.deleteTSMeu.Size = new System.Drawing.Size(153, 24);
+            this.deleteTSMeu.Text = "移除";
+            this.deleteTSMeu.Click += new System.EventHandler(this.deleteTSMeu_Click);
+            // 
+            // addChildTSMeu
+            // 
+            this.addChildTSMeu.Name = "addChildTSMeu";
+            this.addChildTSMeu.Size = new System.Drawing.Size(153, 24);
+            this.addChildTSMeu.Text = "增加子菜单";
+            this.addChildTSMeu.Click += new System.EventHandler(this.addChildTSMeu_Click);
+            // 
+            // lblResultTip
+            // 
+            this.lblResultTip.AutoSize = true;
+            this.lblResultTip.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblResultTip.Location = new System.Drawing.Point(944, 38);
+            this.lblResultTip.Name = "lblResultTip";
+            this.lblResultTip.Size = new System.Drawing.Size(61, 15);
+            this.lblResultTip.TabIndex = 5;
+            this.lblResultTip.Text = "      ";
             // 
             // FrmMain
             // 
@@ -820,17 +860,18 @@
             this.panelTool.ResumeLayout(false);
             this.panelTool.PerformLayout();
             this.spContainerInside.Panel1.ResumeLayout(false);
-            this.spContainerInside.Panel1.PerformLayout();
             this.spContainerInside.Panel2.ResumeLayout(false);
             this.spContainerInside.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerInside)).EndInit();
             this.spContainerInside.ResumeLayout(false);
-            this.panelMenuInfo.ResumeLayout(false);
+            this.panelMenuStrip.ResumeLayout(false);
+            this.panelMenuStrip.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.panelMenuInfo.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -906,6 +947,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblContent;
         private System.Windows.Forms.Label lblTopClickType;
+        private System.Windows.Forms.Panel panelMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem 登录ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 登出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
     }
 }
 
